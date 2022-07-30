@@ -8,21 +8,21 @@ struct tile{
   bool walkable;
 };
 
-template <int Nx, int Ny>
+template <int Nrow, int Ncol>
 class map{
 private:
   std::vector<tile> map_;
 public:
   map() : map_(Nx*Ny,{0,0,1}) {}
 
-  void makeNotWalkable(int x_, int y_) {
-    map_[x_ + Nx*y_].walkable = 0;
+  void makeNotWalkable(int col_, int row_) {
+    map_[col_ + Ncol*row_].walkable = 0;
   }
-  void putLoot(int x_, int y_) {
-    map_[x_ + Nx*y_].loot = 1;
+  void putLoot(int col_, int row_) {
+    map_[col_ + Ncol*row_].loot = 1;
   }
-  void putEnemy(int x_, int y_) {
-    map_[x_ + Nx*y_].enemy = 1;
+  void putEnemy(int col_, int row_) {
+    map_[col_ + Ncol*row_].enemy = 1;
   }
 };
 
