@@ -4,7 +4,7 @@
 #include <string>
 
 struct position{
-  int x,y;
+  int col_, row_;
 };
 struct stats {
     int attack, defence, speed, mana; 
@@ -128,6 +128,33 @@ public:
   int Attack() {
     return playerStats.attack;
    };
+
+  void setPos(int x, int y) {
+    pos_.col_ = x;
+    pos_.row_ = y;
+  }
+
+  int getPosition(char axis){
+      int axis_pos;
+      if(axis == 'x') {
+        axis_pos = pos_.col_;
+      } else if (axis == 'y') {
+        axis_pos = pos_.row_;
+      };
+      return axis_pos;
+  };
+
+  void movePlayer(char direction, int x, int y) {
+      if (direction == 'n') {
+        pos_.row_ -= 1;
+      } else if (direction == 's') {
+          pos_.row_ += 1;
+        } else if (direction == 'w') {
+            pos_.col_ -= 1;
+          } else if (direction == 'e'){
+              pos_.col_ += 1;
+            };
+  };
 
 };
 
