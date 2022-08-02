@@ -31,6 +31,4 @@ if (confirm == 'y') {
 std::cout << "This is after moving" << '\n';
 std::cout << "Colonna: " << colC << '\n';
 std::cout << "Riga: " << rowC << '\n';
-
-
 }
