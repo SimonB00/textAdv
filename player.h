@@ -19,6 +19,7 @@ private:
   int health_;
   int maxHealth_;
   int stamina_;
+  std::string weapon;
   bool died = false;
   stats playerStats = {10, 10, 10, 10};
 
@@ -90,12 +91,12 @@ public:
     playerStats.mana += 10;
   };
 
-  void getPlayerStatus() {
+  void printPlayerStatus() {
     std::cout << "HEALTH:" << health_ << '\n';
     std::cout << "STAMINA:" << stamina_ << '\n';
   };
 
-  void getStats(){
+  void printStats(){
     std::cout << playerName << '\n';
     std::cout << "CLASS:" << Class << '\n';
     std::cout << "HEALTH:" <<  maxHealth_ << '\n';
@@ -115,9 +116,13 @@ public:
       died = true;
     };
   };
-
+  
+  //fixissue with max health
   void heal(int healingValue) {
-    if(health_ < maxHealth_){
+    if(health_ < maxHealth_) {
+     if ((health_ + healingValue) > maxHealth_) {
+      health_ = maxHealth_;
+     };
      health_ += healingValue;
     } else if (health_ >= maxHealth_) {
       health_ = maxHealth_;
@@ -125,7 +130,7 @@ public:
     std::cout << "You have " << health_ << " points" << '\n';
   };
 
-  int Attack() {
+  int getAttack() {
     return playerStats.attack;
    };
 
@@ -144,16 +149,20 @@ public:
       return axis_pos;
   };
 
-  void movePlayer(char direction, int x, int y) {
+  void movePlayer(char direction) {
       if (direction == 'n') {
         pos_.row_ -= 1;
       } else if (direction == 's') {
           pos_.row_ += 1;
-        } else if (direction == 'w') {
-            pos_.col_ -= 1;
-          } else if (direction == 'e'){
-              pos_.col_ += 1;
-            };
+      } else if (direction == 'w') {
+          pos_.col_ -= 1;
+      } else if (direction == 'e'){
+          pos_.col_ += 1;
+      };
+  };
+
+  void pickUpLoot(int id) {
+    
   };
 
 };
