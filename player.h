@@ -2,6 +2,7 @@
 #define player_h
 
 #include <string>
+#include "map.h"
 
 struct position{
   int col_, row_;
@@ -161,8 +162,16 @@ public:
       };
   };
 
-  void pickUpLoot(int id) {
-    
+  void pickUpLoot(position pos_, map map_) {
+    loot loot = map_.getTile(pos_.col_, pos_.row_).loot;
+
+    if(loot.type == "potion") {
+      heal(loot.healingValue);
+    }
+    if(loot.type == "weapon") {
+      playerStats.attack += loot.attackBonus;
+      playerStats.defence += loot.defBonus;
+    }
   };
 
 };

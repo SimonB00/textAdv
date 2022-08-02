@@ -5,36 +5,7 @@
 #include "map.h"
 #include "player.h"
 
-<<<<<<< HEAD
 
 int main() {
 
-=======
-int main() {
-std::string name;
-int colC = 0;
-int rowC = 0;
-std::cout << "Insert name: " << '\n';
-std::cin >> name;
-player p(name);
-p.setPos(colC, rowC);
-char direction;
-p.pickClass();
-std::cout << "This is before moving" << '\n';
-std::cout << "Colonna: " << colC << '\n';
-std::cout << "Riga: " << rowC << '\n';
-char confirm;
-std::cout << "Move?" << '\n';
-std::cin >> confirm;
-if (confirm == 'y') {
-	std::cout << "Where to move? " << '\n';
-	std::cin >> direction;
-    p.movePlayer(direction, colC, rowC);
-    colC = p.getPosition('x');
-    rowC = p.getPosition('y');
-};
-std::cout << "This is after moving" << '\n';
-std::cout << "Colonna: " << colC << '\n';
-std::cout << "Riga: " << rowC << '\n';
->>>>>>> 930c0d62dd0f089bb02b9f7b02078cb48e639906
 }

@@ -1,67 +1,45 @@
-<<<<<<< HEAD
 #ifndef map_h
 #define map_h
 
 #include <vector>
 #include <string>
 
+struct loot {
+  std::string name;
+  std::string type;
+  int attackBonus;
+  int defBonus;
+  int healingValue;
+};
+
 struct tile{
   bool hasLoot, hasEnemy;
-  bool walkable;
+  bool isWalkable;
+  loot loot;
 };
 
-struct loot {
-   std::string name;
-   std::string type;
-   int attackBonus;
-   int defBonus;
-   int healingValue;
-};
-
-=======
-#ifndef
-#define
-
-#include <vector>
-
-struct tile{
-  bool loot, enemy;
-  bool walkable;
-};
-
->>>>>>> 930c0d62dd0f089bb02b9f7b02078cb48e639906
-template <int Nrow, int Ncol>
 class map{
 private:
   std::vector<tile> map_;
+  int Nrow_;
+  int Ncol_;
 public:
-<<<<<<< HEAD
-  map() : map_(Ncol*Nrow,{0,0,1}) {}
-=======
-  map() : map_(Nx*Ny,{0,0,1}) {}
->>>>>>> 930c0d62dd0f089bb02b9f7b02078cb48e639906
+  map(int Nrow, int Ncol) : Nrow_{Nrow}, Ncol_{Ncol}, map_(Ncol*Nrow,{0,0,1}) {}
 
+  tile getTile(int col, int row) { return map_[col + Ncol_*row]; }
+  int getNRow() {return Nrow_; }
+  int getNcol() { return Ncol_; }
+  
   void makeNotWalkable(int col_, int row_) {
-    map_[col_ + Ncol*row_].walkable = 0;
+    map_[col_ + Ncol_*row_].isWalkable = 0;
   }
-  void putLoot(int col_, int row_) {
-<<<<<<< HEAD
-    map_[col_ + Ncol*row_].hasLoot = 1;
+  void putLoot(int col_, int row_, loot loot_) {
+    map_[col_ + Ncol_*row_].hasLoot = 1;
+    map_[col_ + Ncol_*row_].loot = loot_;
   }
-
   void putEnemy(int col_, int row_) {
-    map_[col_ + Ncol*row_].hasEnemy = 1;
+    map_[col_ + Ncol_*row_].hasEnemy = 1;
   }
 };
 
 #endif
-=======
-    map_[col_ + Ncol*row_].loot = 1;
-  }
-  void putEnemy(int col_, int row_) {
-    map_[col_ + Ncol*row_].enemy = 1;
-  }
-};
-
-#endif
->>>>>>> 930c0d62dd0f089bb02b9f7b02078cb48e639906
